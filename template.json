@@ -1,73 +1,210 @@
 {
   "Actor": {
-    "types": ["character", "npc"],
-    "templates": {
-      "base": {
-        "health": {
-          "value": 10,
-          "min": 0,
-          "max": 10
+    "types": [
+      "actor"
+    ],
+    "actor": {
+      "favor": {
+        "thor": {
+          "value": 10
         },
-        "power": {
-          "value": 5,
-          "min": 0,
-          "max": 5
+        "odin": {
+          "value": 10
         },
-        "biography": ""
-      }
-    },
-    "character": {
-      "templates": ["base"],
-      "attributes": {
-        "level": {
-          "value": 1
+        "loki": {
+          "value": 10
         }
       },
-      "abilities": {
-        "str": {
-          "value": 10
+      "characterAttributes": {
+        "isMale": true,
+        "age": 20,
+        "weight": 80.0,
+        "height": 2.0
+      },
+      "healthAttributes": {
+        "oxygenLevel": {
+          "value": 1.0,
+          "max": 1.0
         },
-        "dex": {
-          "value": 10
+        "bloodLevel": {
+          "value": 5000,
+          "max": 5000
         },
-        "con": {
-          "value": 10
+        "heartBeatVolume": {
+          "value": 65
         },
-        "int": {
-          "value": 10
-        },
-        "wis": {
-          "value": 10
-        },
-        "cha": {
-          "value": 10
+        "heartRate": {
+          "min": 30,
+          "resting": 60,
+          "value": 60,
+          "max": 200
         }
-      }
-    },
-    "npc": {
-      "templates": ["base"],
-      "cr": 0
+      },
+      "skills": {
+        "tactics": {
+          "value": 0,
+          "deity": "odin"
+        },
+        "lore": {
+          "value": 0,
+          "deity": "odin"
+        },
+        "perception": {
+          "value": 0,
+          "deity": "odin"
+        },
+        "investigation": {
+          "value": 0,
+          "deity": "odin"
+        },
+        "deduction": {
+          "value": 0,
+          "deity": "odin"
+        },
+        "power": {
+          "value": 0,
+          "deity": "thor"
+        },
+        "athletics": {
+          "value": 0,
+          "deity": "thor"
+        },
+        "healing": {
+          "value": 0,
+          "deity": "thor"
+        },
+        "intimidation": {
+          "value": 0,
+          "deity": "thor"
+        },
+        "performance": {
+          "value": 0,
+          "deity": "thor"
+        },
+        "accuracy": {
+          "value": 0,
+          "deity": "loki"
+        },
+        "speed": {
+          "value": 0,
+          "deity": "loki"
+        },
+        "persuasion": {
+          "value": 0,
+          "deity": "loki"
+        },
+        "deception": {
+          "value": 0,
+          "deity": "loki"
+        },
+        "stealth": {
+          "value": 0,
+          "deity": "loki"
+        }
+      },
+      "body": {}
     }
   },
   "Item": {
-    "types": ["item", "feature", "spell"],
+    "types": [
+      "wearable",
+      "wieldable",
+      "consumable",
+      "general",
+      "organ",
+      "bodyPart",
+      "partLayer",
+      "injury",
+      "material"
+    ],
     "templates": {
-      "base": {
-        "description": ""
+      "itemDescription": {
+        "description": "",
+        "source": ""
+      },
+      "equipable": {
+        "equipsOnType": "",
+        "equippedOn": ""
+      },
+      "physicalItem": {
+        "baseMaterial": "",
+        "quantity": 1,
+        "weight": 0,
+        "price": 0,
+        "rarity": "",
+        "identified": true
+      },
+      "craftedItem": {
+        "workmanshipQuality": "",
+        "workmanshipTime": 0
       }
     },
-    "item": {
-      "templates": ["base"],
-      "quantity": 1,
-      "weight": 0,
-      "formula": "d20 + @str.mod + ceil(@lvl / 2)"
+    "wearable": {
+      "templates": [
+        "physicalItem",
+        "craftedItem",
+        "equipable",
+        "itemDescription"
+      ]
     },
-    "feature": {
-      "templates": ["base"]
+    "wieldable": {
+      "templates": [
+        "physicalItem",
+        "craftedItem",
+        "equipable",
+        "itemDescription"
+      ],
+      "functions": []
     },
-    "spell": {
-      "templates": ["base"],
-      "spellLevel": 1
+    "consumable": {
+      "templates": [
+        "physicalItem",
+        "itemDescription"
+      ]
+    },
+    "general": {
+      "templates": [
+        "physicalItem",
+        "itemDescription"
+      ]
+    },
+    "organ": {
+      "templates": [
+        "physicalItem"
+      ],
+      "bloodRequirement": 0.01,
+      "tempDamageAmount": 0.0,
+      "permanentDamageAmount": 0.0,
+      "injuries": []
+    },
+    "bodyPart": {
+      "templates": [
+        "physicalItem"
+      ],
+      "layers": [],
+      "childPart": null
+    },
+    "partLayer": {
+      "templates": [
+        "physicalItem"
+      ],
+      "organs": [],
+      "thickness": 0.0
+    },
+    "injury": {
+      "onsetAt": 0.05,
+      "maxAt": 0.4,
+      "value": 0.0,
+      "max": 0.5
+    },
+    "material": {
+      "valuePerKG": 0,
+      "density": 0,
+      "rigidity": 0.0,
+      "hardness": 0.0,
+      "toughness": 0.0,
+      "durability": 0.0
     }
   }
 }
+

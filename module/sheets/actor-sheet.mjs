@@ -4,22 +4,23 @@ import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/ef
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class BoilerplateActorSheet extends ActorSheet {
+export class NorseActorSheet extends ActorSheet {
 
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
-      classes: ["boilerplate", "sheet", "actor"],
-      template: "systems/boilerplate/templates/actor/actor-sheet.html",
+      classes: ["norsett", "sheet", "actor"],
+      template: "systems/norsett/templates/actor/actor-sheet.html",
       width: 600,
       height: 600,
-      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features" }]
+      tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: (game.user.isGM ? "gm" : "features") }]
     });
   }
 
   /** @override */
   get template() {
-    return `systems/boilerplate/templates/actor/actor-${this.actor.data.type}-sheet.html`;
+    // return `systems/norsett/templates/actor/actor-${this.actor.data.type}-sheet.html`;
+    return `systems/norsett/templates/actor/actor-sheet.html`;
   }
 
   /* -------------------------------------------- */
@@ -40,15 +41,10 @@ export class BoilerplateActorSheet extends ActorSheet {
     context.flags = actorData.flags;
 
     // Prepare character data and items.
-    if (actorData.type == 'character') {
-      this._prepareItems(context);
-      this._prepareCharacterData(context);
-    }
+    this._prepareItems(context);
+    this._prepareCharacterData(context);
+    this._prepareCharacterDescription(context);
 
-    // Prepare NPC data and items.
-    if (actorData.type == 'npc') {
-      this._prepareItems(context);
-    }
 
     // Add roll data for TinyMCE editors.
     context.rollData = context.actor.getRollData();
@@ -68,10 +64,45 @@ export class BoilerplateActorSheet extends ActorSheet {
    */
   _prepareCharacterData(context) {
     // Handle ability scores.
-    for (let [k, v] of Object.entries(context.data.abilities)) {
-      v.label = game.i18n.localize(CONFIG.BOILERPLATE.abilities[k]) ?? k;
+    context.thorSkills = {};
+    context.odinSkills = {};
+    context.lokiSkills = {};
+    for (let [k, v] of Object.entries(context.data.skills)) {
+      v.label = game.i18n.localize("NORSETT.skills." + k) ?? k;
+       context[v.deity+"Skills"][k] = v;
     }
+    // Handle deities
+    for (let [k, v] of Object.entries(context.data.favor)) {
+      v.label = game.i18n.localize("NORSETT.deities." + k) ?? k;
+    }
+    context.isGM = game.user.isGM;
   }
+
+  _prepareCharacterDescription(context) {
+    const physical = context.data.characterAttributes;
+    const health = context.data.healthAttributes;
+    physical.description = "";
+    if (context.isGM) {
+      physical.description = game.i18n.localize("NORSETT.sheets.general.GMKnowsAll") ?? "NORSETT.sheets.general.GMKnowsAll";
+    }
+    if (this.actor.isOwner) {
+      var locArray = game.i18n.localize("NORSETT.sheets.actor.ownedPhysicalDesc");
+      physical.description = locArray[0] + physical.height + locArray[1] + physical.weight + locArray[2];
+        var heartRate
+      if (health.heartRate.value < (health.heartRate.resting - (health.heartRate.resting - health.heartRate.min) / 2)) {
+        heartRate = game.i18n.localize("NORSETT.sheets.actor.effortOptions")[0];
+      } else if ((health.heartRate.resting - (health.heartRate.resting - health.heartRate.min) / 2) < health.heartRate.value < (health.heartRate.resting + (health.heartRate.max - health.heartRate.resting) / 3)) {
+        heartRate = game.i18n.localize("NORSETT.sheets.actor.effortOptions")[1];
+      } else if (health.heartRate.value < (health.heartRate.resting + (health.heartRate.max - health.heartRate.resting) / 3) < health.heartRate.value < (health.heartRate.max - (health.heartRate.max - health.heartRate.resting) / 3)) {
+        heartRate = game.i18n.localize("NORSETT.sheets.actor.effortOptions")[2];
+      } else {
+        heartRate = game.i18n.localize("NORSETT.sheets.actor.effortOptions")[3]
+      }
+    }
+    physical.description += "\n" + game.i18n.localize("NORSETT.sheets.actor.ownedHeartbeatDesc") + heartRate;
+  }
+
+  _
 
   /**
    * Organize and classify Items for Character sheets.
@@ -167,6 +198,17 @@ export class BoilerplateActorSheet extends ActorSheet {
     }
   }
 
+  _onDrop(event) {
+    let dropped_id = JSON.parse(event.dataTransfer?.getData('text/plain')).id;
+    // let inner = push(dropped_id);
+    const actor = this.actor;
+    let dropped_item = game.items.get(dropped_id);
+    const droppedOn = event.target;
+    if (dropped_item.type == "wearable" && droppedOn.classList.contains("wearable-droppable")) {
+      dropped_item.data.data.equipsOnType
+    }
+  }
+
   /**
    * Handle creating a new Owned Item for the actor using initial data defined in the HTML dataset
    * @param {Event} event   The originating click event
@@ -215,7 +257,7 @@ export class BoilerplateActorSheet extends ActorSheet {
 
     // Handle rolls that supply the formula directly.
     if (dataset.roll) {
-      let label = dataset.label ? `[ability] ${dataset.label}` : '';
+      let label = dataset.label ? `[roll] ${dataset.label}` : '';
       let roll = new Roll(dataset.roll, this.actor.getRollData()).roll();
       roll.toMessage({
         speaker: ChatMessage.getSpeaker({ actor: this.actor }),

@@ -1,0 +1,88 @@
+<ol class="items-list">
+    <h2>Skills and Alignment</h2>
+    <div class="resources grid grid-3col">
+        {{!-- "flex-group-center" is also defined in the _grid.scss file
+        and it will add a small amount of padding, a border, and will
+        center all of its child elements content and text. --}}
+        <div class="resource flex-group-center">
+            <label for="data.favor.thor.value" class="resource-label">{{localize 'NORSETT.sheets.actor.gm.thorFavor'}}</label>
+            <div class="resource-content flexrow flex-center flex-between">
+                <input type="text" name="data.favor.thor.value" value="{{data.favor.thor.value}}" data-dtype="Number"/>
+            </div>
+            {{#each this.thorSkills as |skill key|}}
+                <div class="skills flexrow flex-group-center">
+                    <label for="data.skills.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@skills.{{key}}.mod" data-label="{{key}}">{{skill.label}}</label>
+                    <input type="text" name="data.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
+                </div>
+            {{/each}}
+        </div>
+        <div class="resource flex-group-center">
+            <label for="data.favor.odin.value" class="resource-label">{{localize 'NORSETT.sheets.actor.gm.odinFavor'}}</label>
+            <div class="resource-content flexrow flex-center flex-between">
+                <input type="text" name="data.favor.odin.value" value="{{data.favor.odin.value}}" data-dtype="Number"/>
+            </div>
+            {{#each this.odinSkills as |skill key|}}
+                <div class="skills flexrow flex-group-center">
+                    <label for="data.skills.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@skills.{{key}}.mod" data-label="{{key}}">{{skill.label}}</label>
+                    <input type="text" name="data.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
+                </div>
+            {{/each}}
+        </div>
+
+        <div class="resource flex-group-center">
+            <label for="data.favor.loki.value" class="resource-label">{{localize 'NORSETT.sheets.actor.gm.lokiFavor'}}</label>
+            <div class="resource-content flexrow flex-center flex-between">
+                <input type="text" name="data.favor.loki.value" value="{{data.favor.loki.value}}" data-dtype="Number"/>
+            </div>
+            {{#each this.lokiSkills as |skill key|}}
+                <div class="skills flexrow flex-group-center">
+                    <label for="data.skills.{{key}}.value" class="resource-label rollable flexlarge align-left" data-roll="d20+@skills.{{key}}.mod" data-label="{{key}}">{{skill.label}}</label>
+                    <input type="text" name="data.skills.{{key}}.value" value="{{skill.value}}" data-dtype="Number"/>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+    <h2>{{localize 'NORSETT.sheets.actor.gm.health'}}</h2>
+    <h3>{{localize 'NORSETT.sheets.actor.gm.heartRateHeading'}}</h3>
+    <div class="resource flex-group-center">
+
+
+        <div class="resource-content flexrow flex-center flex-between">
+            <label for="data.healthAttributes.heartRate.value" class="resource-label">{{localize 'NORSETT.sheets.actor.gm.current'}}</label>
+            <input type="text" name="data.healthAttributes.heartRate.value" value="{{data.healthAttributes.heartRate.value}}" data-dtype="Number"/>
+            <span></span>
+            <label for="data.healthAttributes.heartRate.min" class="resource-label">{{localize 'NORSETT.sheets.actor.gm.min'}}</label>
+            <input type="text" name="data.healthAttributes.heartRate.min" value="{{data.healthAttributes.heartRate.min}}" data-dtype="Number"/>
+            <label for="data.healthAttributes.heartRate.resting" class="resource-label">{{localize 'NORSETT.sheets.actor.gm.heartRateResting'}}</label>
+            <input type="text" name="data.healthAttributes.heartRate.resting" value="{{data.healthAttributes.heartRate.resting}}" data-dtype="Number"/>
+            <label for="data.healthAttributes.heartRate.max" class="resource-label">{{localize 'NORSETT.sheets.actor.gm.max'}}</label>
+            <input type="text" name="data.healthAttributes.heartRate.max" value="{{data.healthAttributes.heartRate.max}}" data-dtype="Number"/>
+        </div>
+    </div>
+    <h3>{{localize 'NORSETT.sheets.actor.gm.bloodHeading'}}</h3>
+    <div class="resource flex-group-center">
+        <div class="resource-content flexrow flex-center flex-between">
+            <label for="data.healthAttributes.bloodLevel.value" class="resource-label">{{localize 'NORSETT.sheets.actor.gm.currentBlood'}}</label>
+            <input type="text" name="data.healthAttributes.bloodLevel.value" value="{{data.healthAttributes.bloodLevel.value}}" data-dtype="Number"/>
+            <label for="data.healthAttributes.bloodLevel.max" class="resource-label">{{localize 'NORSETT.sheets.actor.gm.maxBlood'}}</label>
+            <input type="text" name="data.healthAttributes.bloodLevel.max" value="{{data.healthAttributes.bloodLevel.max}}" data-dtype="Number"/>
+            <label for="data.healthAttributes.heartBeatVolume.value" class="resource-label">{{localize 'NORSETT.sheets.actor.gm.heartBeatVolume'}}</label>
+            <input type="text" name="data.healthAttributes.heartBeatVolume.value" value="{{data.healthAttributes.heartBeatVolume.value}}" data-dtype="Number"/>
+        </div>
+    </div>
+    <h3>{{localize 'NORSETT.sheets.actor.gm.oxygenHeading'}}</h3>
+    <div class="resource flex-group-center">
+        <div class="resource-content flexrow flex-center flex-between">
+            <label for="data.healthAttributes.oxygenLevel.value" class="resource-label">{{localize 'NORSETT.sheets.actor.gm.current'}}</label>
+            <input type="text" name="data.healthAttributes.oxygenLevel.value" value="{{data.healthAttributes.oxygenLevel.value}}" data-dtype="Number"/>
+            <label for="data.healthAttributes.oxygenLevel.max" class="resource-label">{{localize 'NORSETT.sheets.actor.gm.max'}}</label>
+            <input type="text" name="data.healthAttributes.oxygenLevel.max" value="{{data.healthAttributes.oxygenLevel.max}}" data-dtype="Number"/>
+        </div>
+    </div>
+
+    <h2>{{localize 'NORSETT.sheets.actor.gm.misc'}}</h2>
+    <div class="name flexrow flex-group-center">
+        <label for="actor.name" class="resource-label flexlarge align-left" data-label="{{actor.name}}">{{localize 'NORSETT.sheets.actor.gm.name'}}</label>
+        <input name="name" type="text" value="{{actor.name}}" placeholder="Name"/>
+    </div>
+</ol>

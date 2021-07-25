@@ -1,0 +1,17 @@
+<div class="grid-2col align-center">
+    <label for="data.baseMaterial" class="resource-label">{{localize 'NORSETT.sheets.item.templates.physical.baseMaterial'}}</label>
+    <div class="flex-group-center">
+        <img class="material-droppable" src="{{#if data.baseMaterial}}{{data.baseMaterial.img}}{{else}}icons/svg/item-bag.svg{{/if}}" height="100" width="100"/>
+        {{#if data.baseMaterial}}
+        <a class="material-delete" title="{{localize 'NORSETT.sheets.general.delete'}}">
+            <i class="fas fa-trash"></i>
+        </a>
+        {{/if}}
+    </div>
+    <label for="data.price" class="resource-label">{{localize 'NORSETT.sheets.item.templates.physical.price'}}</label>
+    <input name="data.price" type="text" value="{{data.price}}" placeholder="Part" data-dtype="Number"/>
+    <label for="data.rarity" class="resource-label">{{localize 'NORSETT.sheets.item.templates.physical.rarity'}}</label>
+    <input name="data.rarity" type="text" value="{{data.rarity}}" placeholder="Part"/>
+    <label for="data.identified" class="resource-label">{{localize 'NORSETT.sheets.item.templates.physical.identified'}}</label>
+    <input type="checkbox" class="link-checkbox" name="data.identified" data-dtype="Boolean" {{checked data.identified}}  />
+</div>

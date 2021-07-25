@@ -1,22 +1,138 @@
 {
-  "BOILERPLATE.AbilityStr": "Strength",
-  "BOILERPLATE.AbilityCon": "Constitution",
-  "BOILERPLATE.AbilityDex": "Dexterity",
-  "BOILERPLATE.AbilityInt": "Intelligence",
-  "BOILERPLATE.AbilityWis": "Wisdom",
-  "BOILERPLATE.AbilityCha": "Charisma",
+  "NORSETT" : {
+    "skills": {
+      "tactics": "Tactics",
+      "lore": "Lore",
+      "perception": "Perception",
+      "investigation": "Investigation",
+      "deduction": "Deduction",
+      "power": "Power",
+      "athletics": "Athletics",
+      "healing": "Healing",
+      "intimidation": "Intimidation",
+      "performance": "Performance",
+      "accuracy": "Accuracy",
+      "speed": "Speed",
+      "persuasion": "Persuasion",
+      "deception": "Deception",
+      "stealth": "Stealth"
+    },
+    "deities": {
+      "thor": "Thor",
+      "odin": "Odin",
+      "loki": "Loki"
+    },
+    "bodyParts": {
+      "biped": {
+        "sides": {
+          "left": "Left",
+          "right": "Right",
+          "front": "Front",
+          "back": "Back"
+        },
+        "head": "Head",
+        "neck": "Neck",
+        "chest": "Chest",
+        "abdomen": "Abdomen",
+        "torso": "Torso",
+        "shoulder": "Shoulder",
+        "upperArm": "Upper Arm",
+        "elbow": "Elbow",
+        "lowerArm": "Lower Arm",
+        "wrist": "Wrist",
+        "hand": "Hand",
+        "hip": "Hip",
+        "upperLeg": "Upper Leg",
+        "knee": "Knee",
+        "lowerLeg": "Lower Leg",
+        "ankle": "Ankle",
+        "foot": "Foot"
+      }
+    },
+    "sheets": {
+      "general": {
+        "GMKnowsAll": "You're the GM - you already know everything!",
+        "delete": "Delete",
+        "add": "Add",
+        "edit": "Edit"
+      },
+      "item": {
+        "templates": {
+          "physical": {
+            "baseMaterial": "Base Material",
+            "price": "Price",
+            "rarity": "Rarity",
+            "identified": "Is Identified?"
+          },
+          "crafted": {
+            "workmanshipQuality": "Workmanship Quality",
+            "workmanshipTime": "Workmanship Time"
+          },
+          "equipable": {
+            "equipsOnType": "Equips On",
+            "equippedOn": "Currently Equipped On"
+          },
+          "description": {
+            "source": "Source"
+          }
+        },
+        "wearable": {
+          "equipsOnType": "Equips On"
+        },
+        "wieldable": {
+          "functions": "Item Functions",
+          "functionName": "Function Name",
+          "usesSkill": "Skill Used",
+          "isAttack": "Attack",
+          "sharpness": "Sharpness",
+          "size": "Size",
+          "damageType": "Damage Type"
+        },
+        "organ": {
+          "injuries": "Injuries",
+          "bloodRequirement": "Blood Requirement",
+          "tempDamageAmount": "Current Temporary Damage",
+          "permanentDamageAmount": "Current Permanent Damage"
+        },
+        "bodyPart": {
+          "organs": "Organs",
+          "thickness": "Thickness"
+        }
+      },
+      "actor": {
+        "ownedPhysicalDesc": ["You are ", " meters tall. You weigh ", " kg."],
+        "ownedRespirationDesc": "You are breathing ",
+        "ownedRespirationOptions": ["about to pass out from lack of air", "desperate for air", "in need of air", "normal"],
+        "ownedHeartbeatDesc": "Your heart beats ",
+        "effortOptions": ["slowly", "normally", "hard", "as hard as possible"],
+        "ownedPainDesc": ["Your ", " is causing you "],
+        "painOptions": ["no pain", "a little pain", "some pain", "severe pain", "unbearable pain"],
+        "gm": {
+          "thorFavor": "Thor's Favor",
+          "odinFavor": "Odin's Favor",
+          "lokiFavor": "Loki's Favor",
+          "name": "Name",
+          "misc": "Miscellaneous",
+          "health": "Health",
+          "heartRateHeading": "Heart Rate",
+          "min": "Min",
+          "heartRateResting": "Resting",
+          "max": "Max",
+          "current": "Current",
+          "maxBlood": "Normal Blood Volume",
+          "currentBlood": "Current Blood Volume",
+          "heartBeatVolume": "Volume per Heart Beat",
+          "bloodHeading": "Blood Flow",
+          "oxygenHeading": "Oxygen Level"
+        },
+        "items": {
+          "inner": "Inner",
+          "outer": "Outer",
+          "wield": "Wielded"
+        }
 
-  "BOILERPLATE.AbilityStrAbbr": "str",
-  "BOILERPLATE.AbilityConAbbr": "con",
-  "BOILERPLATE.AbilityDexAbbr": "dex",
-  "BOILERPLATE.AbilityIntAbbr": "int",
-  "BOILERPLATE.AbilityWisAbbr": "wis",
-  "BOILERPLATE.AbilityChaAbbr": "cha",
 
-  "BOILERPLATE.EffectCreate": "Create Effect",
-  "BOILERPLATE.EffectToggle": "Toggle Effect",
-  "BOILERPLATE.EffectEdit": "Edit Effect",
-  "BOILERPLATE.EffectDelete": "Delete Effect",
-
-  "BOILERPLATE.Add": "Add"
+      }
+    }
+  }
 }
