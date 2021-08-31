@@ -48,7 +48,7 @@ export class NorseItemSheet extends ItemSheet {
         context.data = itemData.data;
         context.flags = itemData.flags;
 
-        this._prepareLinks(context);
+        // this._prepareLinks(context);
 
         return context;
     }
@@ -106,15 +106,15 @@ export class NorseItemSheet extends ItemSheet {
                 break;
             case "wieldable":
                 this._preparePhysical(context);
-                newList = [];
-                for (const key of context.data.functions) {
-                    let match = game.items.get(key);
-                    if (match) {
-                        newList = newList.concat(match);
-                    }
-
-                }
-                context.data.functions = newList;
+                // newList = [];
+                // for (const key of context.data.functions) {
+                //     let match = game.items.get(key);
+                //     if (match) {
+                //         newList = newList.concat(match);
+                //     }
+                //
+                // }
+                // context.data.functions = newList;
 
                 break;
         }
@@ -170,6 +170,13 @@ export class NorseItemSheet extends ItemSheet {
         // Roll handlers, click handlers, etc. would go here.
     }
 
+    _anyParentContains(element, query) {
+        if (element.parentNode && element.classList.contains(query)) {
+            return true;
+        }
+        return element.parentNode?this._anyParentContains(element.parentNode, query):false;
+    }
+
     _onDrop(event) {
         let dropped_id = JSON.parse(event.dataTransfer?.getData('text/plain')).id;
         const item = this.item;
@@ -187,6 +194,8 @@ export class NorseItemSheet extends ItemSheet {
         } else if (dropped_item.type == "partLayer" && droppedOn.classList.contains("layer-droppable")) {
             if (!item.data.data.layers.includes(dropped_id))
                 return item.update({["data.layers"]: [...item.data.data.layers, dropped_id]});
+        } else if (dropped_item.type == "attackType" && this._anyParentContains(droppedOn, "attackType-droppable")) {
+            console.log("Droppable :)")
         }
     }
 
@@ -209,16 +218,15 @@ export class NorseItemSheet extends ItemSheet {
                     "size": 1.0,
                     "damageType": "cutting"
                 });
-                this.item.update({["data.functions"]: [1]});
+                this.item.update({["data.functions"]: newFuncs});
                 console.log(this.item.data.data.functions)
                 return
 
             // case "edit":
             //     return effect.sheet.render(true);
-            // case "delete":
-            //     return effect.delete();
-            // case "toggle":
-            //     return effect.update({disabled: !effect.data.disabled});
+            case "delete":
+                return this.item.update({["data.functions"]: this.item.data.data.functions.filter(f => f.id != li.dataset.functionId)});
+            // case "toggle":            //     return effect.update({disabled: !effect.data.disabled});
         }
     }
 }

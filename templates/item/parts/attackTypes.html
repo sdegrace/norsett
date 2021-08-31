@@ -1,6 +1,6 @@
 <ol class="items-list functions-list">
     {{log "attack types"}}
-    <li class="items-header flexrow" data-function-type="attackType">
+    <li class="items-header flexrow flex-group-center" data-function-type="attackType">
         <h3 class="item-name function-name flexrow">{{localize 'NORSETT.sheets.item.wieldable.functionName'}}</h3>
         <div class="function-source">{{localize 'NORSETT.sheets.item.wieldable.usesSkill'}}</div>
         <div class="function-source">{{localize 'NORSETT.sheets.item.wieldable.isAttack'}}</div>
@@ -8,25 +8,37 @@
         <div class="function-source">{{localize 'NORSETT.sheets.item.wieldable.size'}}</div>
         <div class="function-source">{{localize 'NORSETT.sheets.item.wieldable.damageType'}}</div>
         <div class="item-controls function-controls flexrow">
-        <a class="function-control" data-action="create" title="add">
-            <i class="fas fa-plus"></i> {{localize "NORSETT.sheets.general.add"}}
-        </a>
+            <a class="function-control" data-action="create" title="add">
+                <i class="fas fa-plus"></i> {{localize "NORSETT.sheets.general.add"}}
+            </a>
         </div>
     </li>
 
-    <ol class="item-list">
+    <ol class="item-list attackType-droppable">
         {{log data}}
         {{#each data.functions as |function|}}
-            <li class="item function flexrow" data-function-id="{{function.id}}">
+            <li class="item function flexrow flex-group-center" data-function-id="{{function.id}}">
                 <div class="item-name function-name flexrow">
                     <h4>{{function.label}}</h4>
                 </div>
-                <div class="function-skill">{{function.skillUsed}}</div>
-                <div class="function-attack">{{function.isAttack}}</div>
-                <div class="function-sharpness">{{function.sharpness}}</div>
-                <div class="function-size">{{function.size}}</div>
-                <div class="function-damageType">{{function.damageType}}</div>
-                <div class="item-controls function-controls flexrow">
+                <div class="function-skill">
+                    {{function.skillUsed}}
+                </div>
+                <div class="function-attack">
+                    {{function.isAttack}}
+                </div>
+                <div class="function-sharpness resource">
+<!--                    <input name="function.sharpness" type="text" value="{{function.sharpness}}" data-dtype="Number"/>-->
+                    {{function.sharpness}}
+                </div>
+                <div class="function-size resource">
+<!--                    <input name="function.size" type="text" value="{{function.size}}" data-dtype="Number"/>-->
+                    {{function.size}}
+                </div>
+                <div class="function-damageType">
+                    {{function.damageType}}
+                </div>
+                <div class="item-controls function-controls flex-group-center">
                     <a class="function-control" data-action="edit" title="{{localize 'NORSETT.sheets.general.edit'}}">
                         <i class="fas fa-edit"></i>
                     </a>

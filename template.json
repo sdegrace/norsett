@@ -115,7 +115,9 @@
       "bodyPart",
       "partLayer",
       "injury",
-      "material"
+      "material",
+      "attackType"
+
     ],
     "templates": {
       "itemDescription": {
@@ -204,6 +206,12 @@
       "hardness": 0.0,
       "toughness": 0.0,
       "durability": 0.0
+    },
+    "attackType": {
+      "sharpness": 0,
+      "skillUsed": "",
+      "size": 0,
+      "damageType": ""
     }
   }
 }

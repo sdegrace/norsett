@@ -206,6 +206,8 @@ export class NorseActorSheet extends ActorSheet {
     const droppedOn = event.target;
     if (dropped_item.type == "wearable" && droppedOn.classList.contains("wearable-droppable")) {
       dropped_item.data.data.equipsOnType
+    } else if (dropped_item.type == "wieldable" && droppedOn.classList.contains("wieldable-droppable")) {
+      console.log(dropped_item)
     }
   }
 

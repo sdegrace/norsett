@@ -4,7 +4,7 @@
             {{localize 'NORSETT.sheets.actor.items.wield'}} {{localize 'NORSETT.bodyParts.biped.sides.left'}}
         </div>
         <div>
-            <button type="button" class="squareBoxMed"></button>
+            <button type="button" class="squareBoxMed wieldable-droppable" data-part="leftHand"></button>
         </div>
     </div>
     <div class="flex-group-center box basic">
@@ -12,7 +12,7 @@
             {{localize 'NORSETT.bodyParts.biped.head'}}
         </div>
         <div>
-            {{#times 4}} <button type="button" class="squareBoxMed">{{@index}}</button> {{/times}}
+            {{#times 4}} <button type="button" class="squareBoxMed wieldable-droppable" data-part="head" data-layer="{{@index}}">{{@index}}</button> {{/times}}
         </div>
     </div>
     <div class="flex-group-center box important">
@@ -20,7 +20,7 @@
             {{localize 'NORSETT.sheets.actor.items.wield'}} {{localize 'NORSETT.bodyParts.biped.sides.right'}}
         </div>
         <div>
-            <button type="button" class="squareBoxMed"></button>
+            <button type="button" class="squareBoxMed wieldable-droppable" data-part="rightHand"></button>
         </div>
     </div>
 </div>
@@ -30,7 +30,7 @@
             {{localize 'NORSETT.bodyParts.biped.upperArm'}}
         </div>
         <div>
-            {{#times 4}} <button type="button" class="squareBoxMed">{{@index}}</button> {{/times}}
+            {{#times 4}} <button type="button" class="squareBoxMed wieldable-droppable" data-part="leftUpperArm" data-layer="{{@index}}">{{@index}}</button> {{/times}}
         </div>
     </div>
     <div class="flex-group-center box basic grid-rowspan-2">
@@ -38,7 +38,7 @@
             {{localize 'NORSETT.bodyParts.biped.torso'}}
         </div>
         <div>
-            {{#times 4}} <button type="button" class="squareBoxMed">{{@index}}</button> {{/times}}
+            {{#times 4}} <button type="button" class="squareBoxMed wieldable-droppable" data-part="torso" data-layer="{{@index}}">{{@index}}</button> {{/times}}
         </div>
     </div>
     <div class="flex-group-center box basic">
@@ -46,7 +46,7 @@
             {{localize 'NORSETT.bodyParts.biped.upperArm'}}
         </div>
         <div>
-            {{#times 4}} <button type="button" class="squareBoxMed">{{@index}}</button> {{/times}}
+            {{#times 4}} <button type="button" class="squareBoxMed wieldable-droppable" data-part="rightUpperArm" data-layer="{{@index}}">{{@index}}</button> {{/times}}
         </div>
     </div>
     <div class="flex-group-center box basic">
@@ -54,7 +54,7 @@
             {{localize 'NORSETT.bodyParts.biped.lowerArm'}}
         </div>
         <div>
-            {{#times 4}} <button type="button" class="squareBoxMed">{{@index}}</button> {{/times}}
+            {{#times 4}} <button type="button" class="squareBoxMed wieldable-droppable" data-part="leftLowerArm" data-layer="{{@index}}">{{@index}}</button> {{/times}}
         </div>
     </div>
     <div class="flex-group-center box basic">
@@ -62,7 +62,7 @@
             {{localize 'NORSETT.bodyParts.biped.lowerArm'}}
         </div>
         <div>
-            {{#times 4}} <button type="button" class="squareBoxMed">{{@index}}</button> {{/times}}
+            {{#times 4}} <button type="button" class="squareBoxMed wieldable-droppable" data-part="rightLowerArm" data-layer="{{@index}}">{{@index}}</button> {{/times}}
         </div>
     </div>
 </div>
@@ -72,7 +72,7 @@
             {{localize 'NORSETT.bodyParts.biped.hand'}}
         </div>
         <div>
-            {{#times 4}} <button type="button" class="squareBoxMed">{{@index}}</button> {{/times}}
+            {{#times 4}} <button type="button" class="squareBoxMed wieldable-droppable" data-part="leftHand" data-layer="{{@index}}">{{@index}}</button> {{/times}}
         </div>
     </div>
     <div class="flex-group-center box basic">
@@ -80,7 +80,7 @@
             {{localize 'NORSETT.bodyParts.biped.upperLeg'}}
         </div>
         <div>
-            {{#times 4}} <button type="button" class="squareBoxMed">{{@index}}</button> {{/times}}
+            {{#times 4}} <button type="button" class="squareBoxMed wieldable-droppable" data-part="leftUpperLeg" data-layer="{{@index}}">{{@index}}</button> {{/times}}
         </div>
     </div>
     <div class="flex-group-center box basic">
@@ -88,7 +88,7 @@
             {{localize 'NORSETT.bodyParts.biped.upperLeg'}}
         </div>
         <div>
-            {{#times 4}} <button type="button" class="squareBoxMed">{{@index}}</button> {{/times}}
+            {{#times 4}} <button type="button" class="squareBoxMed wieldable-droppable" data-part="rightUpperLeg" data-layer="{{@index}}">{{@index}}</button> {{/times}}
         </div>
     </div>
     <div class="flex-group-center box basic">
@@ -96,7 +96,7 @@
             {{localize 'NORSETT.bodyParts.biped.hand'}}
         </div>
         <div>
-            {{#times 4}} <button type="button" class="squareBoxMed">{{@index}}</button> {{/times}}
+            {{#times 4}} <button type="button" class="squareBoxMed wieldable-droppable" data-part="rightHand" data-layer="{{@index}}">{{@index}}</button> {{/times}}
         </div>
     </div>
 </div>
@@ -107,7 +107,7 @@
             {{localize 'NORSETT.bodyParts.biped.lowerLeg'}}
         </div>
         <div>
-            {{#times 4}} <button type="button" class="squareBoxMed">{{@index}}</button> {{/times}}
+            {{#times 4}} <button type="button" class="squareBoxMed wieldable-droppable" data-part="leftLowerLeg" data-layer="{{@index}}">{{@index}}</button> {{/times}}
         </div>
     </div>
     <div class="flex-group-center box basic">
@@ -115,7 +115,7 @@
             {{localize 'NORSETT.bodyParts.biped.lowerLeg'}}
         </div>
         <div>
-            {{#times 4}} <button type="button" class="squareBoxMed">{{@index}}</button> {{/times}}
+            {{#times 4}} <button type="button" class="squareBoxMed wieldable-droppable" data-part="rightLowerLeg" data-layer="{{@index}}">{{@index}}</button> {{/times}}
         </div>
     </div>
     <span></span>
@@ -126,7 +126,7 @@
             {{localize 'NORSETT.bodyParts.biped.foot'}}
         </div>
         <div>
-            {{#times 4}} <button type="button" class="squareBoxMed">{{@index}}</button> {{/times}}
+            {{#times 4}} <button type="button" class="squareBoxMed wieldable-droppable" data-part="leftFoot" data-layer="{{@index}}">{{@index}}</button> {{/times}}
         </div>
     </div>
     <div class="flex-group-center box basic">
@@ -134,7 +134,7 @@
             {{localize 'NORSETT.bodyParts.biped.foot'}}
         </div>
         <div>
-            {{#times 4}} <button type="button" class="squareBoxMed">{{@index}}</button> {{/times}}
+            {{#times 4}} <button type="button" class="squareBoxMed wieldable-droppable" data-part="rightFoot" data-layer="{{@index}}">{{@index}}</button> {{/times}}
         </div>
     </div>
 </div>
