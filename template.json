@@ -111,11 +111,7 @@
       "wieldable",
       "consumable",
       "general",
-      "organ",
       "bodyPart",
-      "partLayer",
-      "injury",
-      "material",
       "attackType"
 
     ],
@@ -132,9 +128,14 @@
         "baseMaterial": "",
         "quantity": 1,
         "weight": 0,
-        "price": 0,
+        "money_value": 0,
         "rarity": "",
-        "identified": true
+        "identified": true,
+        "damage": {
+          "value": 0,
+          "max": 100
+        },
+        "durability": 0
       },
       "craftedItem": {
         "workmanshipQuality": "",
@@ -144,7 +145,6 @@
     "wearable": {
       "templates": [
         "physicalItem",
-        "craftedItem",
         "equipable",
         "itemDescription"
       ]
@@ -152,7 +152,6 @@
     "wieldable": {
       "templates": [
         "physicalItem",
-        "craftedItem",
         "equipable",
         "itemDescription"
       ],
@@ -170,42 +169,12 @@
         "itemDescription"
       ]
     },
-    "organ": {
-      "templates": [
-        "physicalItem"
-      ],
-      "bloodRequirement": 0.01,
-      "tempDamageAmount": 0.0,
-      "permanentDamageAmount": 0.0,
-      "injuries": []
-    },
     "bodyPart": {
       "templates": [
         "physicalItem"
       ],
       "layers": [],
       "childPart": null
-    },
-    "partLayer": {
-      "templates": [
-        "physicalItem"
-      ],
-      "organs": [],
-      "thickness": 0.0
-    },
-    "injury": {
-      "onsetAt": 0.05,
-      "maxAt": 0.4,
-      "value": 0.0,
-      "max": 0.5
-    },
-    "material": {
-      "valuePerKG": 0,
-      "density": 0,
-      "rigidity": 0.0,
-      "hardness": 0.0,
-      "toughness": 0.0,
-      "durability": 0.0
     },
     "attackType": {
       "sharpness": 0,

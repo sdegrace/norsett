@@ -207,7 +207,7 @@ export class NorseItemSheet extends ItemSheet {
         // const effect = li.dataset.effectId ? owner.effects.get(li.dataset.effectId) : null;
         switch ( a.dataset.action ) {
             case "create":
-            const last_id = this.item.data.data.functions.length > 0?this.item.data.data.functions.slice(-1)[0].id:0;
+            const last_id = this.item.data.data.functions.length > 0?this.item.data.data.functions.slice(-1)[0].id:-1;
             let newFuncs = this.item.data.data.functions.concat(
                 {
                     "id": last_id + 1,
@@ -216,14 +216,17 @@ export class NorseItemSheet extends ItemSheet {
                     "isAttack": true,
                     "sharpness": 1.0,
                     "size": 1.0,
-                    "damageType": "cutting"
+                    "damageType": "cutting",
+                    "editing": false
                 });
                 this.item.update({["data.functions"]: newFuncs});
                 console.log(this.item.data.data.functions)
                 return
 
-            // case "edit":
-            //     return effect.sheet.render(true);
+            case "edit":
+                var funcs = this.item.data.data.functions;
+                funcs[li.dataset.functionId].editing = !funcs[li.dataset.functionId].editing;
+                return this.item.update({["data.functions"]: funcs})
             case "delete":
                 return this.item.update({["data.functions"]: this.item.data.data.functions.filter(f => f.id != li.dataset.functionId)});
             // case "toggle":            //     return effect.update({disabled: !effect.data.disabled});

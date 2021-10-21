@@ -12,7 +12,7 @@
       "intimidation": "Intimidation",
       "performance": "Performance",
       "accuracy": "Accuracy",
-      "speed": "Speed",
+      "nimbleness": "Nimbleness",
       "persuasion": "Persuasion",
       "deception": "Deception",
       "stealth": "Stealth"
@@ -60,7 +60,7 @@
         "templates": {
           "physical": {
             "baseMaterial": "Base Material",
-            "price": "Price",
+            "money_value": "Value",
             "rarity": "Rarity",
             "identified": "Is Identified?"
           },
