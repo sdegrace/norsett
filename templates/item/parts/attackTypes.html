@@ -17,57 +17,26 @@
     <ol class="item-list attackType-droppable">
         {{log data}}
         {{#each data.functions as |function|}}
-            <li class="item function flexrow flex-group-center" data-function-id="{{function.id}}">
+            <li class="item function flexrow flex-group-center" data-function-id="{{@index}}">
                 <div class="item-name function-name flexrow">
-                    {{#if function.editing}}
-                        <input name="data.functions.{{function.id}}.label" type="text" value="{{function.label}}"/>
-                    {{else}}
-                        <h4>{{function.label}}</h4>
-                    {{/if}}
+                        <input name="data.functions.{{@index}}.label" type="text" value="{{function.label}}"/>
                 </div>
                 <div class="function-skill">
-                    {{#if function.editing}}
-                        <input name="function.skillUsed" type="text" value="{{function.skillUsed}}"/>
-                    {{else}}
-                        {{function.skillUsed}}
-                    {{/if}}
+                        <input name="data.functions.{{@index}}.skillUsed" type="text" value="{{function.skillUsed}}"/>
                 </div>
                 <div class="function-attack">
-                    {{#if function.editing}}
-                        <input type="checkbox" class="link-checkbox" name="function.isAttack" data-dtype="Boolean" {{checked function.isAttack}}  />
-                    {{else}}
-                        {{function.isAttack}}
-                    {{/if}}
+                        <input type="checkbox" class="link-checkbox" name="data.functions.{{@index}}.isAttack" data-dtype="Boolean" {{checked function.isAttack}}  />
                 </div>
                 <div class="function-sharpness resource">
-                    {{#if function.editing}}
-                        <input name="function.sharpness" type="text" value="{{function.sharpness}}" data-dtype="Number"/>
-                    {{else}}
-                        {{function.sharpness}}
-                    {{/if}}
+                        <input name="data.functions.{{@index}}.sharpness" type="text" value="{{@index}}" data-dtype="Number"/>
                 </div>
                 <div class="function-size resource">
-                    {{#if function.editing}}
-                        <input name="function.size" type="text" value="{{function.size}}" data-dtype="Number"/>
-                    {{else}}
-                        {{function.size}}
-                    {{/if}}
+                        <input name="data.functions.{{@index}}.size" type="text" value="{{function.size}}" data-dtype="Number"/>
                 </div>
                 <div class="function-damageType">
-                    {{#if function.editing}}
-                        <input name="function.damageType" type="text" value="{{function.damageType}}"/>
-                    {{else}}
-                        {{function.damageType}}
-                    {{/if}}
+                        <input name="data.functions.{{@index}}.damageType" type="text" value="{{function.damageType}}"/>
                 </div>
                 <div class="item-controls function-controls flex-group-center">
-                    <a class="function-control" data-action="edit" title="{{localize 'NORSETT.sheets.general.edit'}}">
-                        {{#if function.editing}}
-                            <i class="fas fa-check-square"></i>
-                        {{else}}
-                            <i class="fas fa-edit"></i>
-                        {{/if}}
-                    </a>
                     <a class="function-control" data-action="delete" title="{{localize 'NORSETT.sheets.general.delete'}}">
                         <i class="fas fa-trash"></i>
                     </a>

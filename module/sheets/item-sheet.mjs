@@ -204,13 +204,12 @@ export class NorseItemSheet extends ItemSheet {
         event.stopPropagation();
         const a = event.currentTarget;
         const li = a.closest("li");
+        var funcs = this.item.data.data.functions;
         // const effect = li.dataset.effectId ? owner.effects.get(li.dataset.effectId) : null;
         switch ( a.dataset.action ) {
             case "create":
-            const last_id = this.item.data.data.functions.length > 0?this.item.data.data.functions.slice(-1)[0].id:-1;
-            let newFuncs = this.item.data.data.functions.concat(
+            funcs.push(
                 {
-                    "id": last_id + 1,
                     "label": "name",
                     "skillUsed": "Skill",
                     "isAttack": true,
@@ -219,18 +218,27 @@ export class NorseItemSheet extends ItemSheet {
                     "damageType": "cutting",
                     "editing": false
                 });
-                this.item.update({["data.functions"]: newFuncs});
-                console.log(this.item.data.data.functions)
+                this.item.update({["data.functions"]: funcs});
+                console.log(this.item.data.data.functions);
                 return
 
-            case "edit":
-                var funcs = this.item.data.data.functions;
-                funcs[li.dataset.functionId].editing = !funcs[li.dataset.functionId].editing;
-                return this.item.update({["data.functions"]: funcs})
+            // case "edit":
+            //     var funcs = this.item.data.data.functions;
+            //     funcs[li.dataset.functionId].editing = !funcs[li.dataset.functionId].editing;
+            //     return this.item.update({["data.functions"]: funcs})
             case "delete":
-                return this.item.update({["data.functions"]: this.item.data.data.functions.filter(f => f.id != li.dataset.functionId)});
+                funcs.splice(li.dataset.functionId, 1);
+                return this.item.update({["data.functions"]: funcs});
             // case "toggle":            //     return effect.update({disabled: !effect.data.disabled});
         }
+    }
+
+    async _updateObject(event, formData) {
+        console.log(duplicate(formData));
+        const data = expandObject(formData);
+        const functionsArray = Object.values(data.data.functions || {});
+        await super._updateObject(event, formData);
+        this.item.update({["data.functions"]: functionsArray});
     }
 }
 
