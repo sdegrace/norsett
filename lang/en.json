@@ -35,6 +35,7 @@
         "chest": "Chest",
         "abdomen": "Abdomen",
         "torso": "Torso",
+        "back": "Back",
         "shoulder": "Shoulder",
         "upperArm": "Upper Arm",
         "elbow": "Elbow",
@@ -62,7 +63,9 @@
             "baseMaterial": "Base Material",
             "money_value": "Value",
             "rarity": "Rarity",
-            "identified": "Is Identified?"
+            "identified": "Is Identified?",
+            "durability": "Durability",
+            "damage": "Damage"
           },
           "crafted": {
             "workmanshipQuality": "Workmanship Quality",
@@ -96,14 +99,15 @@
         },
         "bodyPart": {
           "organs": "Organs",
-          "thickness": "Thickness"
+          "thickness": "Thickness",
+          "child": "Connects to"
         }
       },
       "actor": {
         "ownedPhysicalDesc": ["You are ", " meters tall. You weigh ", " kg."],
         "ownedRespirationDesc": "You are breathing ",
         "ownedRespirationOptions": ["about to pass out from lack of air", "desperate for air", "in need of air", "normal"],
-        "ownedHeartbeatDesc": "Your heart beats ",
+        "ownedHeartbeatDesc": "Your heart is beating ",
         "effortOptions": ["slowly", "normally", "hard", "as hard as possible"],
         "ownedPainDesc": ["Your ", " is causing you "],
         "painOptions": ["no pain", "a little pain", "some pain", "severe pain", "unbearable pain"],

@@ -8,6 +8,7 @@ export const preloadHandlebarsTemplates = async function () {
         // Actor partials.
         "systems/norsett/templates/actor/parts/actor-features.html",
         "systems/norsett/templates/actor/parts/actor-items.html",
+        "systems/norsett/templates/actor/parts/actor-bodyParts.html",
         "systems/norsett/templates/actor/parts/actor-GM.html",
         "systems/norsett/templates/actor/parts/actor-effects.html",
         // Item partials

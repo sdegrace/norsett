@@ -19,6 +19,7 @@
     <a class="item" data-tab="description">Description</a>
     <a class="item" data-tab="items">Items</a>
     <a class="item" data-tab="gm">GM</a>
+    <a class="item" data-tab="bodyParts">Body Parts</a>
     <a class="item" data-tab="effects">Effects</a>
   </nav>
 
@@ -63,10 +64,15 @@
        {{> "systems/norsett/templates/actor/parts/actor-items.html"}}
     </div>
 
-    {{!-- Owned Spells Tab --}}
+    {{!-- GM Tab --}}
     <div class="tab gm" data-group="primary" data-tab="gm">
       {{> "systems/norsett/templates/actor/parts/actor-GM.html"}}
     </div>
+
+      {{!-- Body Parts Tab --}}
+      <div class="tab bodyParts" data-group="primary" data-tab="bodyParts">
+          {{> "systems/norsett/templates/actor/parts/actor-bodyParts.html"}}
+      </div>
 
     {{!-- Active Effects Tab --}}
     <div class="tab effects flexcol" data-group="primary" data-tab="effects">

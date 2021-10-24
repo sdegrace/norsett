@@ -21,7 +21,6 @@
         <a class="item" data-tab="description">Description</a>
         <a class="item" data-tab="attributes">Attributes</a>
     </nav>
-
     {{!-- Sheet Body --}}
     <section class="sheet-body">
 
@@ -35,36 +34,25 @@
         {{!-- Attributes Tab --}}
         <div class="tab attributes" data-group="primary" data-tab="attributes">
             {{!-- As you add new fields, add them in here! --}}
+            <label for="data.durability" class="resource-label">{{localize
+                    'NORSETT.sheets.item.templates.physical.durability'}}</label>
+            <input name="data.durability" type="text" value="{{data.durability}}" placeholder="Part"
+                   data-dtype="Number"/>
+            <label for="data.damage" class="resource-label">{{localize
+                    'NORSETT.sheets.item.templates.physical.damage'}}</label>
+            <input name="data.damage" type="text" value="{{data.damage}}" placeholder="Part" data-dtype="Number"/>
             <div class="resource">
                 <div class="grid-2col align-center">
                     <div>
                         <label for="data.layers" class="resource-label">{{localize
-                                'NORSETT.sheets.item.bodyPart.layers'}}</label>
+                                'NORSETT.sheets.item.bodyPart.child'}}</label>
                     </div>
-                    <div class="flexrow">
-                        {{#if data.layers}}
-                            {{#each data.layers}}
-                                <div>
-                                    {{log this}}
-                                    <img src="{{this.data.img}}" height="75" width="75"/>
-                                    <br>
-                                    {{this.name}}
-                                    <a class="layer-delete" data-id="{{this._id}}"
-                                       title="{{localize 'NORSETT.sheets.general.delete'}}">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </div>
-                            {{/each}}
-                        {{/if}}
-                        <div>
-                            <img class="layer-droppable" src="icons/svg/item-bag.svg" height="75" width="75"/>
-                        </div>
+                    <div class="bodyPart-droppable">
+                        {{#each data.childParts as |part|}}
+                            <img src="{{part.img}}" height="75" width="75"/>
+                        {{/each}}
+                        <img src="icons/svg/item-bag.svg" height="75" width="75"/>
                     </div>
-                    <label for="data.thickness" class="resource-label">{{localize
-                            'NORSETT.sheets.item.bodyPart.thickness'}}</label>
-                    <input name="data.thickness" type="text" value="{{data.thickness}}"
-                           placeholder="Part" data-dtype="Number"/>
-                    {{> "systems/norsett/templates/item/parts/physical.html"}}
                 </div>
             </div>
         </div>

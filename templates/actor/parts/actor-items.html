@@ -34,11 +34,21 @@
         </div>
     </div>
     <div class="flex-group-center box basic grid-rowspan-2">
-        <div>
-            {{localize 'NORSETT.bodyParts.biped.torso'}}
+        <div class="box">
+            <div>
+                {{localize 'NORSETT.bodyParts.biped.torso'}}
+            </div>
+            <div>
+                {{#times 4}} <button type="button" class="squareBoxMed wieldable-droppable" data-part="torso" data-layer="{{@index}}">{{@index}}</button> {{/times}}
+            </div>
         </div>
-        <div>
-            {{#times 4}} <button type="button" class="squareBoxMed wieldable-droppable" data-part="torso" data-layer="{{@index}}">{{@index}}</button> {{/times}}
+        <div class="box">
+            <div>
+                {{localize 'NORSETT.bodyParts.biped.back'}}
+            </div>
+            <div>
+                <button type="button" class="squareBoxMed wieldable-droppable" data-part="back" data-layer="0"></button>
+            </div>
         </div>
     </div>
     <div class="flex-group-center box basic">

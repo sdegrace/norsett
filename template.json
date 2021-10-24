@@ -122,7 +122,7 @@
       },
       "equipable": {
         "equipsOnType": "",
-        "equippedOn": ""
+        "equippedOn": []
       },
       "physicalItem": {
         "baseMaterial": "",
@@ -173,14 +173,7 @@
       "templates": [
         "physicalItem"
       ],
-      "layers": [],
-      "childPart": null
-    },
-    "attackType": {
-      "sharpness": 0,
-      "skillUsed": "",
-      "size": 0,
-      "damageType": ""
+      "childParts": []
     }
   }
 }

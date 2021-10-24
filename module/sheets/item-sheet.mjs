@@ -48,7 +48,7 @@ export class NorseItemSheet extends ItemSheet {
         context.data = itemData.data;
         context.flags = itemData.flags;
 
-        // this._prepareLinks(context);
+        this._prepareLinks(context);
 
         return context;
     }
@@ -59,14 +59,14 @@ export class NorseItemSheet extends ItemSheet {
             case "bodyPart":
                 this._preparePhysical(context);
                 newList = [];
-                for (const key of context.data.layers) {
+                for (const key of context.data.childParts) {
                     let match = game.items.get(key);
                     if (match) {
                         newList = newList.concat(match);
                     }
 
                 }
-                context.data.layers = newList;
+                context.data.childParts = newList;
                 break;
             case "consumable":
                 break;
@@ -196,7 +196,11 @@ export class NorseItemSheet extends ItemSheet {
                 return item.update({["data.layers"]: [...item.data.data.layers, dropped_id]});
         } else if (dropped_item.type == "attackType" && this._anyParentContains(droppedOn, "attackType-droppable")) {
             console.log("Droppable :)")
+        } else if (dropped_item.type == "bodyPart" && this._anyParentContains(droppedOn, "bodyPart-droppable")) {
+            if (!item.data.data.childParts.includes(dropped_id))
+                return item.update({["data.childParts"]: [...item.data.data.childParts, dropped_id]});
         }
+
     }
 
     onManageItemFunction(event) {
@@ -236,6 +240,9 @@ export class NorseItemSheet extends ItemSheet {
     async _updateObject(event, formData) {
         console.log(duplicate(formData));
         const data = expandObject(formData);
+        Object.keys(formData).forEach(k => {
+            if (k.startsWith("data.functions")) delete formData[k];
+        });
         const functionsArray = Object.values(data.data.functions || {});
         await super._updateObject(event, formData);
         this.item.update({["data.functions"]: functionsArray});

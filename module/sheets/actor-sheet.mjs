@@ -208,6 +208,11 @@ export class NorseActorSheet extends ActorSheet {
       dropped_item.data.data.equipsOnType
     } else if (dropped_item.type == "wieldable" && droppedOn.classList.contains("wieldable-droppable")) {
       console.log(dropped_item)
+      console.log(droppedOn)
+    } else if (dropped_item.type == "bodyPart" && droppedOn.classList.contains("bodyPart-droppable")) {
+      var body = actor.data.data.body;
+      body[droppedOn.dataset.part] = dropped_item;
+      actor.update({["data.body"]:body});
     }
   }
 
